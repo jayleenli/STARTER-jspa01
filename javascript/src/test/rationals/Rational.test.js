@@ -13,11 +13,11 @@ describe("Rational class tests", () => {
       expect(rational.denominator).toBe(2);
     });
 
-    test("(1 pts) truncates decimals", () => {
-      const expected = new Rational(3, 2);
-      const actual = new Rational(3.1, 2.9);
-      expect(actual).toEqual(expected);
-    });
+    // test("(1 pts) truncates decimals", () => {
+    //   const expected = new Rational(3, 2);
+    //   const actual = new Rational(3.1, 2.9);
+    //   expect(actual).toEqual(expected);
+    // });
 
     // test("(2 pts) resolves double negatives", () => {
     //   const rational = new Rational(-1, -2);
