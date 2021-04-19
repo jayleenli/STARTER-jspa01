@@ -25,6 +25,21 @@
     "coverage": "react-scripts test --env=jsdom-fourteen --coverage --watchAll=false",
     "eject": "react-scripts eject"
   },
+  "jest": {
+    "resetMocks": true,
+    "collectCoverageFrom": [
+      "src/**/*.{js,jsx,ts,tsx}",
+      "!<rootDir>/node_modules/",
+      "!src/serviceWorker.js",
+      "!src/setupTests.js",
+      "!src/components/Auth/*",
+      "!src/index.js"
+    ],
+    "coverageReporters": [
+      "text",
+      "lcov"
+    ]
+  },
   "eslintConfig": {
     "extends": [
       "react-app",
@@ -44,6 +59,7 @@
     ]
   },
   "devDependencies": {
-    "@stryker-mutator/jest-runner": "^4.5.1"
+    "@stryker-mutator/jest-runner": "^4.5.1",
+    "jest-environment-jsdom-fourteen": "^1.0.1"
   }
 }
