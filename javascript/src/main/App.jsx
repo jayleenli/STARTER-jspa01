@@ -1,12 +1,12 @@
 import React from "react";
-import "main/App.css";
-import Add from "main/pages/Add";
-import Subtract from "main/pages/Subtract";
-import Multiply from "main/pages/Multiply";
+import "./App.css";
+import Add from "./pages/Add";
+import Subtract from "./pages/Subtract";
+import Multiply from "./pages/Multiply";
 import { Container } from "react-bootstrap";
 import { Route, Switch } from "react-router-dom";
-import AppNavbar from "main/components/AppNavbar";
-import AppFooter from "main/components/AppFooter";
+import AppNavbar from "./components/AppNavbar";
+import AppFooter from "./components/AppFooter";
 
 function App() {
   return (

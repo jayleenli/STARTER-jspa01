@@ -1,7 +1,7 @@
 import React from "react";
 import { render } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import Subtract from "main/pages/Subtract";
+import Subtract from "../../main/pages/Subtract";
 
 describe("Subtract tests", () => {
   test("(1 pts) it should render without crashing", () => {

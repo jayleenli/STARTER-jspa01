@@ -1,6 +1,6 @@
 import React, { useState, useReducer } from "react";
 import { Row, Col, Button, Alert } from "react-bootstrap";
-import RationalInput from "main/components/RationalInput";
+import RationalInput from "./RationalInput";
 
 const Calculator = ({ calculateFromUserInput, title, subtitle, sign }) => {
   const [result, setResult] = useState({

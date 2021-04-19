@@ -1,7 +1,7 @@
 import React from "react";
 import { render } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import Add from "main/pages/Add";
+import Add from "../../main/pages/Add";
 
 describe("Add tests", () => {
   test("(1 pts) it should render without crashing", () => {

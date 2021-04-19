@@ -1,4 +1,4 @@
-import Rational from "main/rationals/Rational";
+import Rational from "../rationals/Rational";
 
 const parseRationalsFromUserInput = (userInput) => {
   const rationals = userInput.map((value) => {

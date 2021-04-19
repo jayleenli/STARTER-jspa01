@@ -1,4 +1,4 @@
-import { gcd, lcm } from "main/rationals/Helpers";
+import { gcd, lcm } from "../../main/rationals/Helpers";
 
 describe("gcd tests", () => {
   test("(1 pts) gcd of 12 and 3 is 3", () => {

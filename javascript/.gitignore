@@ -25,3 +25,6 @@ yarn-debug.log*
 yarn-error.log*
 
 testResults.json
+# stryker temp files
+.stryker-tmp
+stryker-tmp/

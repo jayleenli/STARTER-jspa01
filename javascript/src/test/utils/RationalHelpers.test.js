@@ -4,9 +4,9 @@ import {
   subtractRationalsFromUserInput,
   multiplyRationalsFromUserInput,
   divideRationalsFromUserInput,
-} from "main/utils/RationalHelpers";
-import Rational from "main/rationals/Rational";
-jest.mock("main/rationals/Rational");
+} from "../../main/utils/RationalHelpers";
+import Rational from "../../main/rationals/Rational";
+jest.mock("../../main/rationals/Rational");
 
 describe("RationalHelpers tests", () => {
   const userInput = [

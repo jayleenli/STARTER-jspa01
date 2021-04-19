@@ -1,7 +1,7 @@
 import React from "react";
 import { render } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import Multiply from "main/pages/Multiply";
+import Multiply from "../../main/pages/Multiply";
 
 describe("Multiply tests", () => {
   test("(1 pts) it should render without crashing", () => {
