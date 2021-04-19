@@ -1,11 +1,10 @@
 name: mutation testing
 
 on:
-  workflow_dispatch:
+  pull_request:
   push:
     branches:
-      - master
-      - test/**
+      - main
       
 jobs:
   core:
