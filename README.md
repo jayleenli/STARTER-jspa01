@@ -77,3 +77,4 @@ To set this up:
   the URL <https://codecov.io/gh/ucsb-cs156-w21/REPO-NAME-HERE> you should be able to
   see your code coverage results.
 
+# Running Stryker
