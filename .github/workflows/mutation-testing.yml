@@ -1,0 +1,70 @@
+name: mutation testing
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - master
+      - test/**
+
+jobs:
+  core:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        java-version: ['openjdk@1.11']
+    steps:
+      - uses: actions/checkout@v2
+      - uses: coursier/cache-action@v6
+      - uses: olafurpg/setup-scala@v10
+        with:
+          java-version: ${{ matrix.java-version }}
+      - name: Run Stryker4s
+        run: |
+          export JAVA_OPTS="-XX:+CMSClassUnloadingEnabled -Xmx6G $JAVA_OPTS"
+          echo 'stryker4s{reporters=["console","dashboard"],base-dir="core",dashboard.module="core"}' > stryker4s.conf
+          sbt 'project stryker4s-core; stryker'
+        env:
+          STRYKER_DASHBOARD_API_KEY: ${{ secrets.STRYKER_DASHBOARD_API_KEY }}
+
+  command-runner:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        java-version: ['openjdk@1.11']
+    steps:
+      - uses: actions/checkout@v2
+      - uses: coursier/cache-action@v6
+      - uses: olafurpg/setup-scala@v10
+        with:
+          java-version: ${{ matrix.java-version }}
+      - name: Run Stryker4s
+        run: |
+          export JAVA_OPTS="-XX:+CMSClassUnloadingEnabled -Xmx6G $JAVA_OPTS"
+          echo 'stryker4s{reporters=["console","dashboard"],base-dir="command-runner",dashboard.module="command-runner"}' > stryker4s.conf
+          sbt 'project stryker4s-command-runner; stryker'
+        env:
+          STRYKER_DASHBOARD_API_KEY: ${{ secrets.STRYKER_DASHBOARD_API_KEY }}
+
+  maven-plugin:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        java-version: ['openjdk@1.11']
+    steps:
+      - uses: actions/checkout@v2
+      - uses: coursier/cache-action@v6
+      - uses: olafurpg/setup-scala@v10
+        with:
+          java-version: ${{ matrix.java-version }}
+      - name: Run Stryker4s
+        run: |
+          export JAVA_OPTS="-XX:+CMSClassUnloadingEnabled -Xmx6G $JAVA_OPTS"
+          sbt 'set ThisBuild / version := "SET-BY-SBT-SNAPSHOT"; stryker4s-api2_12/publishM2; stryker4s-core2_12/publishM2'
+          cd maven
+          mvn -B --no-transfer-progress stryker4s:run
+        env:
+          STRYKER_DASHBOARD_API_KEY: ${{ secrets.STRYKER_DASHBOARD_API_KEY }}
