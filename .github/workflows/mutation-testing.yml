@@ -12,19 +12,30 @@ jobs:
       run: 
         working-directory: javascript
     runs-on: ubuntu-latest
+    env:
+      NODE_PATH: src/
     steps:
-      - uses: actions/checkout@v1
+      - uses: actions/checkout@v2
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
       - name: Install & Build
         run: |
           npm install
           npm run build
       - name: Run Stryker
-        run: npx run --scope "@stryker-mutator/core" --concurrency 1 --stream stryker -- -- --concurrency 3
+        run: npx stryker run
         env:
           STRYKER_DASHBOARD_API_KEY: ${{ secrets.STRYKER_DASHBOARD_API_KEY }}
 
   dependencies_and_plugins:
     runs-on: ubuntu-latest
+    defaults:
+      run: 
+        working-directory: javascript
+    env:
+      NODE_PATH: src/
     steps:
       - uses: actions/checkout@v1
       - name: Install & Build
@@ -32,6 +43,6 @@ jobs:
           npm install
           npm run build
       - name: Run Stryker
-        run: npx run --scope "@stryker-mutator/{api,instrumenter,util,typescript-checker,jest-runner,karma-runner,mocha-runner,jasmine-runner}" --concurrency 1 --stream stryker -- -- --concurrency 3
+        run: npx stryker run
         env:
           STRYKER_DASHBOARD_API_KEY: ${{ secrets.STRYKER_DASHBOARD_API_KEY }}
